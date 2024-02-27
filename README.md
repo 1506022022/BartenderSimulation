@@ -1,4 +1,4 @@
-<p align="right">
+<p align="left">
 <img src="https://github.com/1506022022/BartenderSimulation/assets/88864717/5f5bdec3-15f9-49c8-83fb-764ea4aee77f.png" width="80%" height="80%">
 </p>
 
