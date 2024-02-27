@@ -20,7 +20,11 @@ Unity, HTC VIVE Pro 2
 ## 주요 코드
 |설명|링크|
 |---|---|
-|||
-|||
-|||
-|||
+|제출 이벤트 처리|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/SubjectSpace.cs>|
+|아이템 구분|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/ID.cs>|
+|아이템 정보창|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/ItemDataWindow.cs>|
+|아이템 데이터|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/Features.cs>|
+|아이템 인스턴스 관리|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/GameObjectManager.cs>|
+|병 속의 액체 움직임|<https://github.com/1506022022/BartenderSimulation/blob/main/Contents/AllMeshPressure.cs>|
+
+
