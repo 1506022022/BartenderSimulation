@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR.InteractionSystem;
 
-public class Title_SubjectSpace : MonoBehaviour
+public class SubjectSpace : MonoBehaviour
 {
     const string SubjectTargetTag = "Glass";
     public UnityEvent subjectEvent;
