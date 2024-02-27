@@ -7,6 +7,8 @@ public class GameObjectManager : MonoBehaviour
 {
     #region static
     static List<GameObjectManager> managers;
+
+    // ì”¬ ë‚´ì˜ ë“±ë¡ëœ ì˜¤ë¸Œì íŠ¸ë“¤ ì‚­ì œ í›„ ì¬ìƒì„±
     public static void InitGameObject()
     {
         foreach (var manager in managers)
@@ -40,97 +42,24 @@ public class GameObjectManager : MonoBehaviour
 
     private void Awake()
     {
+    // ë“±ë¡
         if (managers == null) managers = new List<GameObjectManager>();
         managers.Add(this);
     }
     private void OnDestroy()
     {
+    // ì œê±°
         managers.Remove(this);
     }
     void Start()
     {
+    // ìœ„ì¹˜ê°’ ì´ˆê¸°í™”, í•„ìš”ì—†ëŠ” ì»´í¬ë„ŒíŠ¸ ì œê±°, ì•„ì´í…œì— í•„ìš”í•œ ì»´í¬ë„ŒíŠ¸ ë¶€ì°©
         _posIniter = new PositionIniter(transform, transform.position, transform.rotation);
         DestroyOtherComponent();
         Create();
     }
 
-    [ContextMenu("Create")]
-    public void Create()
-    {
-        if (_isDontCreate) return;
-        if (IsCreated) return;
-        _features.GetCustomEditor().Create(gameObject);
-        if (_features.Name != "Ice")
-        {
-            var infoWindow = RequireComponent<ItemDataWindow>(gameObject);
-        }
-        RequireComponent<AudioSource>(gameObject);
-        RequireComponent<SoundManager>(gameObject);
-        IsCreated = true;
-        if (_isInitPos) _posIniter.SetPos();
-        gameObject.SetActive(true);
-
-    }
-    [ContextMenu("Destroy")]
-    public void Destroy()
-    {
-        if (!_isDontDestoryChildrens)
-            GetGUI?.Destroy(gameObject);
-        IsCreated = false;
-        gameObject.SetActive(false);
-    }
-    void DestroyOtherComponent()
-    {
-        if (_dontDestroy == null) _dontDestroy = new List<Component>();
-        _dontDestroy.Add(this);
-        _dontDestroy.Add(GetComponent<Transform>());
-
-        if (!_isDontDestoryChildrens)
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                Destroy(transform.GetChild(i));
-            }
-
-        var components = GetComponents<Component>();
-        if (!_isDontDestoryComponents)
-            for (int i = 0; i < components.Length; i++)
-            {
-                if (_dontDestroy.Any(x => x.Equals(components[i]))) continue;
-                Destroy(components[i]);
-            }
-    }
-    public void Init(Features features, List<Component> dontDestorys = null, bool isInitPos = false)
-    {
-        _features = features;
-        _dontDestroy = dontDestorys;
-        _isInitPos = isInitPos;
-    }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying &&   // °ÔÀÓ ½ÇÇà ÁßÀÌ ¾Æ´Ò ¶§¸¸ ±×¸³´Ï´Ù.
-            _features != null)
-        {           // ±×¸± ´ë»óÀÌ ÀÖÀ» ¶§¸¸ ±×¸³´Ï´Ù.
-            var modelToRender = _features.GetCustomEditor().GetGizmosMesh();
-            if (modelToRender != null)
-            {
-                // ¸ğµ¨ÀÇ À§Ä¡¿Í È¸ÀüÀ» °¡Á®¿É´Ï´Ù.
-                Vector3 position = Vector3.zero;
-                Quaternion rotation = Quaternion.identity;
-
-                // ¸ğµ¨ÀÇ À§Ä¡¿Í È¸ÀüÀ» ¼³Á¤ÇÕ´Ï´Ù.
-                Gizmos.matrix = Matrix4x4.TRS(position, rotation, Vector3.one);
-
-                // ¸ğµ¨À» ±×¸³´Ï´Ù.
-                Gizmos.DrawMesh(modelToRender, transform.position, transform.rotation, transform.lossyScale);
-                Gizmos.matrix = Matrix4x4.identity;
-            }
-        }
-    }
-#endif
-}
-
+// ìœ„ì¹˜ê°’ ì´ˆê¸°í™”
 class PositionIniter
 {
     Transform _target;
