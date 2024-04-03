@@ -9,6 +9,7 @@
 **'동명대학교'** 의 졸업작품으로 진행된 **'바텐딩 시뮬레이션'** 을 주제로 한 팀 프로젝트입니다.
 
 플레이 영상     : <https://youtu.be/y-PIBJWMwbI>
+
 액체 구현 영상  : <https://youtu.be/vpV7AWpKORU>
 
 ## 개발 기간
