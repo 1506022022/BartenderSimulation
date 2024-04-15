@@ -10,7 +10,7 @@
 
 플레이 영상     : <https://youtu.be/L0K8DpX9mrk>
 
-액체 구현 영상  : <https://youtu.be/vpV7AWpKORU>
+액체 구현 영상  : <https://youtu.be/NFZv7ArVrMo>
 
 ## 개발 기간
 2023-03-01 ~ 2022-10-31
